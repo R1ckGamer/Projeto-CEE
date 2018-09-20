@@ -1,18 +1,26 @@
-# [NOME DA DISCIPLINA] X sem. 20XX
+# [Circuitos elétrico e eletronicos] 2 sem. 2018
 
-## Turma XXX
-## Projeto: "nome do projeto"
+## Turma 1G11/ 1G12
+## Projeto: "Drone"
 ## Integrantes do grupo:
 
-* Aluno 1
-* Aluno 2
-* Aluno 3
-* Aluno 4
+* Diane Bastos
+* Henrique P. Rodrigues
+* Júnior Candido
+* Nickolas Diogo
 
 ## Descrição resumida do projeto
 
-Descreva resumidamente o projeto aqui.
-
+Com esse projeto iremos construir um drone ,utilizando o arduino pilot.
+itens do projeto
+1 Controladora Arducopter 
+1 Receptor
+1 Radio Controle  
+4 Motores 
+4 Esc
+4 Helices
+1 Jogo de Frame
+Jumpers
 _______________________________________
 Obs:
 
