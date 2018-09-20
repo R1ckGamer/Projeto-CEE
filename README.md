@@ -1,13 +1,13 @@
 # [Circuitos elétrico e eletronicos] 2 sem. 2018
 
 ## Turma 1G11/ 1G12
-## Projeto: "Drone"
+## Projeto: "Drone quadricoptero"
 ## Integrantes do grupo:
 
-* Diane Bastos
-* Henrique P. Rodrigues
-* Júnior Candido
-* Nickolas Diogo
+* Diane Bastos - 31898750
+* Henrique P. Rodrigues - 41807960
+* Júnior Candido - 31883478
+* Nickolas Diogo - 41827805
 
 ## Descrição resumida do projeto
 
