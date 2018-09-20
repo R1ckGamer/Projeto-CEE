@@ -4,7 +4,7 @@
 ## Projeto: "Drone quadricoptero"
 ## Integrantes do grupo:
 
-* Diane Bastos - 31898750
+* Daiane Bastos - 31898750
 * Henrique P. Rodrigues - 41807960
 * Júnior Candido - 31883478
 * Nickolas Diogo - 41827805
