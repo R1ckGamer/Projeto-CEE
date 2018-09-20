@@ -13,14 +13,7 @@
 
 Com esse projeto iremos construir um drone ,utilizando o arduino pilot.
 itens do projeto
-1 Controladora Arducopter 
-1 Receptor
-1 Radio Controle  
-4 Motores 
-4 Esc
-4 Helices
-1 Jogo de Frame
-Jumpers
+1 Controladora Arducopter , 1 Receptor , 1 Radio Controle , 4 Motores , 4 Esc , 4 Helices , 1 Jogo de Frame ,Jumpers
 _______________________________________
 Obs:
 
