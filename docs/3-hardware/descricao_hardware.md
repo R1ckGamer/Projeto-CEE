@@ -84,11 +84,9 @@ Cabo Flexível Remoto 1mm - apresenta padrão de qualidade e resistência. Ele
 conta com condutor em cobre puro que garante excelente transmissão sem
 interferências, além de ser muito flexível.
 
-2) Desenho Tinkercad ou Fritzing
+2)Desenho
+![esquematico-robo-sr1-okok](https://user-images.githubusercontent.com/43407527/49222953-84aefc00-f3c4-11e8-9896-1db91d3c3250.jpg)
 
+3) Materiais para confecção de caixas e consoles (ou arquivos para impressão 3D)
 
-3) Esquema eletrônico
-
-4) Materiais para confecção de caixas e consoles (ou arquivos para impressão 3D)
-
-utilização de um chassis de um carrrinho de brinquedo para utilização na montagem do projeto 
+utilização de um chassi de um carrrinho de brinquedo para utilização na montagem do projeto 
