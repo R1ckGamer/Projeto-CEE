@@ -7,67 +7,21 @@ apresentando os problemas a serem solucionados, as necessidades dos principais e
 
 ROBÔS AUTÔNOMOS são robôs que podem realizar os objetivos desejados em
 ambientes desestruturados sem a ajuda humana. Este projeto teve a idéia
-preliminar de um robô simples .
+preliminar de um robô simples.
+A idéia é colocar em prática o ROBÔ AUTÔNOMO para realizar tarefa de movimento, evitando colisões e podendo ser programado para
+realizar tarefas domésticas como um sugador de sujeira.
+
 ## Problema
 
-* Descrição do problema: ___
-* Quem é afetado pelo problema: ____
-* Impacto no negócio: ___
-* Benefícios de uma boa solução: ___
+* Descrição do problema: Realizar a montagem do circuito e a programação do robô.
+* Quem é afetado pelo problema: Desenvolvedores.
 
-## Definições, abreviações e outros termos do domínio do problema
-
-* Definição 1
-* Definição 2
-* Definição 3
-* etc.
-
-## Integração com outros sistemas
-
-* Sistema externo 1
-* Sistema externo 2
-* Sistema externo 3
-* etc.
  
-## Interessados
+## Interessados e Usuários
 
-* Tipo de interessado 1
-* Tipo de interessado 2
-* Tipo de interessado 3
-* etc.
-
-## Usuários
-
-* Tipo de usuário 1
-* Tipo de usuário 2
-* Tipo de usuário 3
-* etc.
+* Pessoas em geral, com o objetivo de ter um robô que faça sua tarefa sozinho, como por exemplo: sugar sujeira do chão.
 
 ## Funcionalidades do produto
 
-* Funcionalidade 1
-* Funcionalidade 2
-* etc.
+* Se locomover de forma independente sem colidir com outros objetos.
 
-## Restrições do projeto
-
-* Restrição 1
-* Restrição 2
-* Restrição 3
-* etc.
-
-## Protótipos
-
-### Protótipos para funcionalidade 1
-
-![](proto1.png)
-
-Fonte: Exemplos gerados pelo assistente do **Enterprise Architect**.
-
-### Protótipos para funcionalidade 2
-
-![](proto2.png)
-
-Fonte: Exemplos gerados pelo assistente do **Enterprise Architect**.
-
-### Protótipos para funcionalidade N
