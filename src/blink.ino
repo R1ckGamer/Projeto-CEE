@@ -1,29 +1,221 @@
-/*
-  Blink
-  Turns on an LED on for one second, then off for one second, repeatedly.
+  #include <Servo.h>    
+  #include <AFMotor.h>  
+    
+  
+  #define trigPin A0 
+  #define echoPin A1 
+  #define BUZZER A2  
+  AF_DCMotor motor1(1);   
+  AF_DCMotor motor2(2);   
 
-  Most Arduinos have an on-board LED you can control. On the Uno and
-  Leonardo, it is attached to digital pin 13. If you're unsure what
-  pin the on-board LED is connected to on your Arduino model, check
-  the documentation at http://www.arduino.cc
-
-  This example code is in the public domain.
- 
-  modified 8 May 2014
-  by Scott Fitzgerald
- */
-
-
-// the setup function runs once when you press reset or power the board
-void setup() {
-  // initialize digital pin 13 as an output.
-  pinMode(13, OUTPUT);
-}
-
-// the loop function runs over and over again forever
-void loop() {
-  digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(1000);              // wait for a second
-  digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
-  delay(1000);              // wait for a second
-}
+  int TempoGirar = 1;
+  int distanciaObstaculo = 30; 
+  int velocidadeMotores = 75;
+  Servo servo_ultra_sonico;
+  
+  long duracao;
+  long distancia_cm=0;
+  int minimumRange=5; 
+  int maximumRange=200;
+    
+  
+  void setup(){    
+    Serial.begin(9600);
+    servo_ultra_sonico.attach(10); 
+    pinMode(trigPin, OUTPUT); 
+    pinMode(echoPin, INPUT);  
+    pinMode(BUZZER,OUTPUT);   
+    motor1.setSpeed(velocidadeMotores);   
+    motor2.setSpeed(velocidadeMotores);    
+    servo_ultra_sonico.write(90);  
+    rotacao_Parado;  
+  }    
+    
+  
+  void loop(){    
+    pensar();
+  }    
+    
+  
+  void pensar(){    
+   reposicionaServoSonar();
+   int distancia = lerSonar();
+   Serial.print("distancia em cm: "); 
+   Serial.println(distancia); 
+   if (distancia > distanciaObstaculo) { 
+     rotacao_Frente(); 
+   }else{   
+     rotacao_Parado(); 
+     posicionaCarroMelhorCaminho(); 
+     pensar();    
+   }   
+  }  
+    
+  
+  int lerSonar(){    
+   digitalWrite(trigPin, LOW);
+   delayMicroseconds(2);
+   digitalWrite(trigPin,HIGH); 
+   delayMicroseconds(10);
+   digitalWrite(trigPin,LOW); 
+   duracao = pulseIn(echoPin,HIGH); 
+   distancia_cm = duracao/56; 
+   delay(30);  
+   return distancia_cm;            
+  }   
+    
+  
+  int calcularDistanciaCentro(){    
+   servo_ultra_sonico.write(90);    
+   delay(20);   
+   int leituraDoSonar = lerSonar();
+   delay(500);   
+   leituraDoSonar = lerSonar();   
+   delay(500);   
+   Serial.print("Distancia do Centro: "); 
+   Serial.println(leituraDoSonar);   
+   return leituraDoSonar;  
+  }    
+    
+  
+  int calcularDistanciaDireita(){    
+   servo_ultra_sonico.write(0);   
+   delay(400);  
+   int leituraDoSonar = lerSonar();   
+   delay(800);   
+   leituraDoSonar = lerSonar();   
+   delay(800);   
+   Serial.print("Distancia da Direita: ");  
+   Serial.println(leituraDoSonar);   
+   return leituraDoSonar;    
+  }    
+    
+  
+    int calcularDistanciaEsquerda(){    
+   servo_ultra_sonico.write(180);   
+   delay(400);  
+   int leituraDoSonar = lerSonar();   
+   delay(800);   
+   leituraDoSonar = lerSonar();   
+   delay(800);   
+   Serial.print("Distancia Esquerda: ");  
+   Serial.println(leituraDoSonar);   
+   return leituraDoSonar;    
+  }    
+    
+  
+  char calculaMelhorDistancia(){    
+   int esquerda = calcularDistanciaEsquerda();    
+   int centro = calcularDistanciaCentro();    
+   int direita = calcularDistanciaDireita();    
+   reposicionaServoSonar();    
+   int maiorDistancia = 0;   
+   char melhorDistancia = '0';     
+     
+   if (centro > direita && centro > esquerda){    
+     melhorDistancia = 'c';    
+     maiorDistancia = centro;    
+   }else   
+   if (direita > centro && direita > esquerda){    
+     melhorDistancia = 'd';    
+     maiorDistancia = direita;    
+   }else  
+   if (esquerda > centro && esquerda > direita){    
+     melhorDistancia = 'e';    
+     maiorDistancia = esquerda;    
+   }    
+   if (maiorDistancia <= distanciaObstaculo) { 
+     rotacao_Re();    
+     posicionaCarroMelhorCaminho();    
+   }    
+   reposicionaServoSonar();  
+   return melhorDistancia;    
+  }    
+    
+  
+  void posicionaCarroMelhorCaminho(){    
+   char melhorDist = calculaMelhorDistancia();     
+   Serial.print("melhor Distancia em cm: ");  
+   Serial.println(melhorDist);  
+   if (melhorDist == 'c'){    
+     pensar();    
+   }else if (melhorDist == 'd'){    
+     rotacao_Direita();    
+   }else if (melhorDist == 'e'){    
+     rotacao_Esquerda();     
+   }else{    
+     rotacao_Re();    
+   }    
+   reposicionaServoSonar();    
+  }    
+    
+  
+  void reposicionaServoSonar(){    
+   servo_ultra_sonico.write(90);   
+   delay(200);   
+  }    
+    
+  
+  void rotacao_Parado()    
+  {    
+   Serial.println(" Motor: Parar ");
+   motor1.run(RELEASE); 
+   motor2.run(RELEASE);  
+  }    
+    
+  
+  void rotacao_Frente()    
+  {    
+   Serial.println("Motor: Frente ");   
+   motor1.run(FORWARD); 
+   motor2.run(FORWARD);   
+   delay(50);    
+  }    
+    
+  
+  void rotacao_Re()    
+  {    
+   Serial.println("Motor: ré ");  
+   for (int i=0; i <= 3; i++){
+      digitalWrite(BUZZER, HIGH); 
+      delay(100);
+      motor1.run(BACKWARD);  
+      motor2.run(BACKWARD);  
+      delay(100);  
+      digitalWrite(BUZZER, LOW);
+      delay(100);
+   } 
+   rotacao_Parado();    
+  }    
+    
+  
+  void rotacao_Direita()    
+  {    
+   digitalWrite(BUZZER, HIGH);
+   delay(100);
+   motor1.run(BACKWARD);    
+   motor2.run(BACKWARD);      
+   delay(50);  
+   digitalWrite(BUZZER, LOW); 
+   delay(100);
+   Serial.println(" Para a direita ");  
+   motor1.run(FORWARD); 
+   motor2.run(BACKWARD);
+   delay(TempoGirar);    
+  }    
+    
+  
+  void rotacao_Esquerda()    
+  {    
+   digitalWrite(BUZZER, HIGH); 
+   delay(100);
+   motor1.run(BACKWARD);   
+   motor2.run(BACKWARD);   
+   delay(50);  
+   digitalWrite(BUZZER, LOW);
+   delay(100);
+   Serial.println(" Para a esquerda ");  
+   motor1.run(BACKWARD); 
+   motor2.run(FORWARD);
+   delay(TempoGirar);    
+  }  
