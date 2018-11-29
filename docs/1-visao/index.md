@@ -1,15 +1,13 @@
 # Documento de Visão do Projeto "NOME DO PROJETO"
 
-Este documento apresenta uma solução de software para o projeto *"NOME DO PROJETO"*, 
+Este documento apresenta uma solução de software para o projeto *"ROBÔ AUTÔNOMO"*, 
 apresentando os problemas a serem solucionados, as necessidades dos principais envolvidos, o alcance do projeto e as funcionalidades esperadas.
 
 ## Objetivos
 
-* Objetivo 1
-* Objetivo 2
-* Objetivo 3
-* etc.
-
+ROBÔS AUTÔNOMOS são robôs que podem realizar os objetivos desejados em
+ambientes desestruturados sem a ajuda humana. Este projeto teve a idéia
+preliminar de um robô simples .
 ## Problema
 
 * Descrição do problema: ___
